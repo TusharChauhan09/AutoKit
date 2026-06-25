@@ -1,12 +1,5 @@
 import { Command } from "commander";
-
-type TelegramResponse = {
-  ok: boolean;
-  result?: {
-    message_id?: number;
-  };
-  description?: string;
-};
+import { sendTelegramMessage } from "autokit-core";
 
 const program = new Command();
 
@@ -30,34 +23,18 @@ program
       process.exit(1);
     }
 
-    const response = await fetch(
-      `https://api.telegram.org/bot${token}/sendMessage`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-        }),
-      },
-    );
+    try {
+      const result = await sendTelegramMessage({
+        botToken: token,
+        chatId,
+        message,
+      });
 
-    const data = await response.json() as TelegramResponse;
-    if (!response.ok || !data.ok) {
-        const detail = data.description ?? response.statusText;
-      console.error(`Failed to send Telegram message: ${detail}`);
+      console.log(JSON.stringify(result));
+    } catch (error) {
+      console.error("Failed to send Telegram message.", error);
       process.exit(1);
     }
-
-    const messageId = data.result?.message_id;
-    if(messageId === undefined) {
-        console.error("Failed to retrieve message ID from Telegram response.");
-        process.exit(1);
-    }
-    console.log(`Telegram message sent successfully. Chat ID: ${chatId}`);
-    console.log("Telegram message sent successfully. Message ID:", messageId);
   });
 
 program.parseAsync(process.argv);

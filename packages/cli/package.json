@@ -1,12 +1,13 @@
 {
-    "name": "autokit",
-    "version": "0.0.0",
-    "private": true,
-    "type": "module",
-    "dependencies": {
-        "commander": "^15.0.0"
-    },
-    "devDependencies": {
-        "@types/node": "^26.0.0"
-    }
+  "name": "autokit",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "commander": "^15.0.0",
+    "autokit-core": "workspace:*" 
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0"
+  }
 }

@@ -1,9 +1,12 @@
 {
     "name": "autokit-workspace",
-    "private":true,
-    "type" : "module",
+    "private": true,
+    "type": "module",
     "workspaces": ["packages/*"],
-    "scripts":{
-        "dev:cli" : "bun run packages/cli/src/index.ts"
+    "scripts": {
+        "dev:cli": "bun run packages/cli/src/index.ts"
+    },
+    "devDependencies": {
+        "@types/node": "^26.0.1"
     }
 }
