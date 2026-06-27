@@ -8,6 +8,18 @@
         "@types/node": "^26.0.1",
       },
     },
+    "apps/remote-mcp": {
+      "name": "autokit-remote-mcp",
+      "version": "0.0.0",
+      "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.29.0",
+        "autokit-core": "workspace:*",
+        "hono": "^4.12.27",
+      },
+      "devDependencies": {
+        "@types/node": "^26.0.1",
+      },
+    },
     "packages/cli": {
       "name": "autokit",
       "version": "0.0.0",
@@ -57,6 +69,8 @@
     "autokit-core": ["autokit-core@workspace:packages/core"],
 
     "autokit-mcp": ["autokit-mcp@workspace:packages/local-mcp"],
+
+    "autokit-remote-mcp": ["autokit-remote-mcp@workspace:apps/remote-mcp"],
 
     "body-parser": ["body-parser@2.3.0", "", { "dependencies": { "bytes": "^3.1.2", "content-type": "^2.0.0", "debug": "^4.4.3", "http-errors": "^2.0.1", "iconv-lite": "^0.7.2", "on-finished": "^2.4.1", "qs": "^6.15.2", "raw-body": "^3.0.2", "type-is": "^2.1.0" } }, "sha512-2cGmJupaNgg+QUwVLAucDuWuoMZ6EX9iHDRswZ5lsNYEmwPaRknMPCLZz07yTzVq/83p4o/wzbDZbBrTvGGTIw=="],
 
